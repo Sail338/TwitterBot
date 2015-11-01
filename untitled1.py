@@ -22,7 +22,7 @@ class ClassName(StreamListener):
 		listofData.append(status.text)
 		
 			
-		if(ClassName.fuckmylife<10):
+		if(ClassName.fuckmylife<25):
 			return True
 
 		else:
