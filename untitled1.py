@@ -22,7 +22,7 @@ class ClassName(StreamListener):
 		listofData.append(status.text)
 		
 			
-		if(ClassName.fuckmylife<25):
+		if(ClassName.fuckmylife<30):
 			return True
 
 		else:
@@ -51,6 +51,7 @@ consumersecret ='v6wpvt4UXUl4t4OMmkqrX0UFTHzcS6SaJJG4gmHo09313s9Lvw'
 def login():
 			auth = OAuthHandler(consumerkey,consumersecret)
 			auth.set_access_token(acces, key)
+
 			return auth
 
 def streamData(n):
@@ -61,7 +62,7 @@ def streamData(n):
 			
 			stream.filter(track=[n])
 
-		
+	
 
 
 
@@ -80,15 +81,23 @@ def data():
 		streamData(sk)
 		badcounter = 0
 		goodCounter = 0
+		topicscore =0
 		for tweet in listofData:
 			 #print tweet
 			 r=client.post('analyzesentiment',{'text':tweet})
 			 data = r.json()
+			 print data
 			 print data["aggregate"]["score"]
-			 if(data["aggregate"]["score"] >0 or data["aggregate"]['sentiment'] == "positive"):
+			 if(data["aggregate"]["score"] > 0 or data["aggregate"]['sentiment'] == "positive"):
 			 	goodCounter +=1
 			 elif (data["aggregate"]["score"] < 0 or data["aggregate"]["sentiment"] == "negative"):
 			 	badcounter +=1
+
+
+
+
+
+
 
 
 			 
