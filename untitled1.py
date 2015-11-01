@@ -37,7 +37,7 @@ class ClassName(StreamListener):
 
 	def on_error(self, status):
 
-		print status
+		print (status)
 
 
 
@@ -76,7 +76,7 @@ def hello_world():
 def data():
 	if(request.method == 'POST'):
 		sk = request.form["kek"]
-		print sk
+
 		streamData(sk)
 		badcounter = 0
 		goodCounter = 0
