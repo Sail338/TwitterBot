@@ -22,7 +22,7 @@ class ClassName(StreamListener):
 		listofData.append(status.text)
 		
 			
-		if(ClassName.fuckmylife<1):
+		if(ClassName.fuckmylife<10):
 			return True
 
 		else:
@@ -57,7 +57,7 @@ def streamData(n):
 
 
 			autth = login()
-			stream = tweepy.streaming.Stream(autth, ClassName(),async = True)
+			stream = tweepy.streaming.Stream(autth, ClassName())
 			
 			stream.filter(track=[n])
 
@@ -76,6 +76,7 @@ def hello_world():
 def data():
 	if(request.method == 'POST'):
 		sk = request.form["kek"]
+		print sk
 		streamData(sk)
 		badcounter = 0
 		goodCounter = 0
@@ -83,6 +84,7 @@ def data():
 			 #print tweet
 			 r=client.post('analyzesentiment',{'text':tweet})
 			 data = r.json()
+			 print data["aggregate"]["score"]
 			 if(data["aggregate"]["score"] >0 or data["aggregate"]['sentiment'] == "positive"):
 			 	goodCounter +=1
 			 elif (data["aggregate"]["score"] < 0 or data["aggregate"]["sentiment"] == "negative"):
@@ -104,4 +106,4 @@ def data():
 
 if __name__ == '__main__':
 	app.debug = True
-	app.run(threaded=True)
+	app.run()

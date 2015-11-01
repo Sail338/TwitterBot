@@ -1,12 +1,50 @@
 <html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='Chart.js') }}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
-<div id="container" style="width:100%; height:400px;"></div>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='lol.css') }}">
+	
+	
+</head>
 
-<script type="text/javascript">
-<canvas id="myChart" width="400" height="400"></canvas
+
+<div class = "container">
+
  
+<section id = 'format'>
+
+<h1 class = "lead"> Here is Your Data </h1>
+
+ <canvas id="myChart" width="500" height="500"></canvas>
+
+<script>
+   
+
+var data = [
+    {
+        value: {{badCounter}},
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Negative"
+    },
+    {
+        value: {{goodCounter}},
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "Positive"
+    },
+   
+]
+var ctx = document.getElementById("myChart").getContext("2d");
+var myPieChart = new Chart(ctx).Pie(data);
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+</section>
+</div>
+<script src="https://cdnjs.com/libraries/chart.js"></script>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </html>
